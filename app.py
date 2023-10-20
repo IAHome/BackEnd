@@ -1,3 +1,7 @@
+import subprocess
+comando_instalacion = ["pip", "install", "flask"]
+subprocess.run(comando_instalacion)
+
 from flask import Flask, request, jsonify
 from modelo import Modelo
 
