@@ -13,6 +13,8 @@ Esta es una aplicación simple desarrollada con Flask que proporciona un servici
 
 2. Instala las dependencias:
 
+3. Para correrlo se ejecuta python3 app.py
+
 
 ## Uso
 
