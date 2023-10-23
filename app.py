@@ -32,6 +32,20 @@ def predecir():
     }
     return jsonify(respuesta)
 
+@app.route('/test/agrupar', methods=['POST'])
+def procesar_datos_financieros():
+    datos_financieros = request.get_json()
+
+    numero_respuesta = 123
+    mensaje_respuesta = "Prueba exitosa"
+
+    respuesta = {
+        'numero': numero_respuesta,
+        'mensaje': mensaje_respuesta
+    }
+
+    return jsonify(respuesta)
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000)
 
