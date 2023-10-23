@@ -26,3 +26,29 @@ def predecir_cluster(nuevo_registro):
     
     # Devolver la predicción del clúster
     return resultado_serializable
+
+def obtener_consejo_financiero(cluster):
+    # Define los clústeres y los consejos asociados a cada uno
+    consejos_por_cluster = {
+        0: "Consejo para el clúster 0.",
+        1: "Consejo para el clúster 1.",
+        2: "Consejo para el clúster 2.",
+        3: "Consejo para el clúster 3."
+        # Puedes agregar más clústeres y consejos según sea necesario
+    }
+
+    # Obtén el consejo asociado al clúster
+    consejo = consejos_por_cluster.get(cluster, "Consejo genérico si el clúster no se encuentra en la lista.")
+
+    # Usa GPT-3.5 para generar un consejo más detallado basado en el clúster
+    if cluster in consejos_por_cluster:
+        prompt = f"Tengo 4 cluster de personas con datos economicos, dame consejos para el cluster número: Cluster {cluster}: {consejo}"
+        respuesta_gpt = openai.Completion.create(
+            engine="text-davinci-003",
+            prompt=prompt,
+            max_tokens=150  # Ajusta el número de tokens según sea necesario
+        )
+        consejo_detallado = respuesta_gpt.choices[0].text.strip()
+        return consejo_detallado
+
+    return consejo
