@@ -7,9 +7,11 @@ subprocess.run(comando_instalacion)
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
-CORS(app)
+cors = CORS()
+
 
 from modelo import predecir_cluster
+
 
 @app.route('/agrupar', methods=['POST'])
 def predecir():
