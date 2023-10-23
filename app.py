@@ -15,7 +15,7 @@ modelo_instancia = Modelo()
 
 def agrupar():
     data = request.get_json()
-    parametros = ['Edad', 'Genero', 'comuna', 'TipoVivienda', 'TotalpersonasH', 'SumaIngresosAUX', 'SumaIngresosLAB', 'SumaIngresosLAV', 'SumaIngresosExt', 'SumaGastos']
+    parametros = ['edad', 'genero', 'comuna', 'tipoVivienda', 'totalPersonasH', 'sumaIngresosAux','sumaIngresosLAV', 'sumaIngresosExt', 'sumaGastos']
     for param in parametros:
         if param not in data:
             return jsonify({'error': f'Falta el parámetro {param}'}), 400

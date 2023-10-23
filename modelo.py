@@ -1,5 +1,5 @@
 
 class Modelo:
-    def agrupar(self, Edad, Genero, comuna, TipoVivienda, TotalpersonasH, SumaIngresosAUX, SumaIngresosLAV, SumaIngresosExt, SumaGastos):
+    def agrupar(self, edad, genero, comuna, tipoVivienda, totalPersonasH, sumaIngresosAux, sumaIngresosLAV, sumaIngresosExt, sumaGastos):
         grupo = 2
         return grupo
