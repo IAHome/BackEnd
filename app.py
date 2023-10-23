@@ -1,12 +1,10 @@
 import pickle
-import openai
+from modelo import *
+import subprocess
 import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
-
-
-
-openai.api_key = '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'
+from flask_cors import CORS
 
 
 comando_instalacion = ["pip", "install", "flask"]

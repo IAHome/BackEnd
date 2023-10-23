@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 import pickle
+import openai
 import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
+
+openai.api_key = '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'
 
 # Cargar el modelo KMeans previamente entrenado
 with open('kmeans_model.pkl', 'rb') as file:
