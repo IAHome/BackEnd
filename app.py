@@ -1,5 +1,6 @@
-import subprocess
 from flask_cors import CORS
+import subprocess
+
 
 comando_instalacion = ["pip", "install", "flask"]
 subprocess.run(comando_instalacion)
@@ -7,7 +8,7 @@ subprocess.run(comando_instalacion)
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
-cors = CORS()
+CORS(app)
 
 
 from modelo import predecir_cluster
