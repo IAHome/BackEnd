@@ -23,7 +23,7 @@ from modelo import predecir_cluster
 def predecir():
     datos_nuevo_registro = request.get_json()  # Suponiendo que los datos se envían como JSON desde la solicitud POST
     cluster_predicho = predecir_cluster(datos_nuevo_registro)
-    consejo_financiero = obtener_consejo_financiero(cluster_predicho)
+    consejo_financiero = obtener_consejo_financiero(cluster_predicho, datos_nuevo_registro)
 
     # Devuelve el clúster y el consejo financiero en la respuesta JSON
     respuesta = {
