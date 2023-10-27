@@ -15,7 +15,15 @@ Esta es una aplicación simple desarrollada con Flask que proporciona un servici
 
 3. pip install -U flask-cors
 
-4. Para correrlo se ejecuta python3 app.py
+4. pip install pip install -U scikit-learn
+
+5. pip install openai
+
+6. pip install pandas
+
+7. pip install python-dotenv
+
+8. Para correrlo se ejecuta python3 app.py
 
 
 ## Uso

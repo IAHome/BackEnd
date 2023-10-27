@@ -8,7 +8,8 @@ from sklearn.preprocessing import MinMaxScaler
 from dotenv import load_dotenv
 
 load_dotenv()
-openai.api_key = os.environ.get('OPENAI_API_KEY')
+#openai.api_key = os.environ.get('OPENAI_API_KEY')
+openai.api_key = "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"
 
 # Cargar el modelo KMeans previamente entrenado
 with open('kmeans_model.pkl', 'rb') as file:
