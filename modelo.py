@@ -42,6 +42,8 @@ def obtener_consejo_financiero(cluster, datos):
     vivienda = datos["TipoVivienda"]
     personas = datos["TotalpersonasH"]
     ingresos = datos["SumaIngresosLAB"]
+    ingresosaux = datos["SumaIngresosAUX"]
+    ingresosext = datos["SumaIngresosExt"]
     gastos = datos["SumaGastos"]
 
     tipos_vivienda = {
@@ -67,20 +69,20 @@ def obtener_consejo_financiero(cluster, datos):
         0: "Debería ahorrar y realizar la búsqueda de nuevas oportunidades que le permitan incrementar sus ingresos.",
         1: "Debe buscar nuevas oportunidades de ingreso.",
         2: "Puede invertir, ahorrar y relalizar gastos ociosos.",
-        3: "Puede ahorrar y relizar gastos ociosos."
+        3: "Puede ahorrar y realizar gastos ociosos."
         # Puedes agregar más clústeres y consejos según sea necesario
     }
 
     clus = consejos_por_cluster.get(cluster)
 
-    base = f"Tengo {edad} años de edad, género {gen}, vivo en la comuna {comuna} de Medellín en una vivienda de tipo {tipo_vivienda}. En mi hogar, hay un total de {personas} personas sin incluirme. Mis ingresos mensuales son de {ingresos} pesos colombianos y los gastos mensuales son de {gastos} pesos colombianos. ¿Puedes darme un consejo financiero realista basado en esta información? Por favor habla de forma profesional y que sea personalizado, menciona los datos necesarios, ten también en cuenta este consejo el cual se definió mediante clustering {cluster}"
+    base = f"Tengo {edad} años de edad, soy de género {gen}, vivo en la comuna {comuna} de Medellín en una vivienda de tipo {tipo_vivienda}. En mi hogar, hay un total de {personas} personas sin incluirme. Mis ingresos mensuales son de {ingresos} pesos colombianos, sumado a mis ingresos por auxilios que son de {ingresosaux} y mis ingresos extra que son {ingresosext} suman mis ingresos totales, mis gastos mensuales son de {gastos} pesos colombianos. ¿Puedes darme un consejo financiero realista basado en esta información? Por favor habla de forma profesional y que sea personalizado, menciona los datos que haga falta mencionar de los que te pasé, puedes mencionarlos a medida que vayas haciendo uso de ellos durante el consejo, ten también en cuenta este consejo el cual se definió mediante clustering {clus}, que el texto se vea profesional y natural, que no parezca que viene de una persona sino de un sistema, pero al mismo tiempo natural"
 
     # Obtén el consejo asociado al clúster
     consejo = consejos_por_cluster.get(cluster, "Consejo genérico si el clúster no se encuentra en la lista.")
 
     # Usa GPT-3.5 para generar un consejo más detallado basado en el clúster
     if cluster in consejos_por_cluster:
-        prompt = f"Tengo 4 cluster de personas con datos economicos, dame consejos para el cluster número: Cluster {cluster}: {base}"
+        prompt = f"{base}"
         respuesta_gpt = openai.Completion.create(
             engine="text-davinci-003",
             prompt=prompt,
@@ -88,6 +90,8 @@ def obtener_consejo_financiero(cluster, datos):
         )
         consejo_detallado = respuesta_gpt.choices[0].text.strip()
         return consejo_detallado
+
+    return consejo_detallado
 
     return consejo
 
